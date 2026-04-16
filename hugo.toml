@@ -1,0 +1,14 @@
+baseURL = "https://pinhigh.dev/"
+languageCode = "en-us"
+title = "pinHigh"
+theme = "PaperMod"
+
+[params]
+  description = "MCU projects, code examples, and embedded ideas"
+  ShowReadingTime = true
+  ShowCodeCopyButtons = true
+  defaultTheme = "dark"
+
+[markup.highlight]
+  style = "monokai"
+  lineNos = true
