@@ -12,3 +12,10 @@ theme = "PaperMod"
 [markup.highlight]
   style = "monokai"
   lineNos = true
+
+[build]
+  command = "hugo"
+  publish = "public"
+
+[build.environment]
+  HUGO_VERSION = "0.145.0"
