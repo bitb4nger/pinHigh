@@ -6,8 +6,8 @@ draft = false
 
 Test post. Code block test:
 
-```python
+` ` `python
 from machine import Pin
 led = Pin(25, Pin.OUT)
 led.on()
-```
+` ` `
