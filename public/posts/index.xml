@@ -6,8 +6,15 @@
     <description>Recent content in Posts on pinHigh</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 16 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 19 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pi Pico 2W with Waveshare Pico ePaper 2.13</title>
+      <link>http://localhost:1313/posts/pico-epaper-2.13/</link>
+      <pubDate>Sun, 19 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/pico-epaper-2.13/</guid>
+      <description>&lt;p&gt;I recently picked up a Pico-ePaper-2.13 from Waveshare. This is a great, small e-ink display with a fast refresh time designed for interfacing with the Pi Pico. I want to make a few things with this, but I&amp;rsquo;m going to start out making a clock/weather widget display for your desk. I&amp;rsquo;m using a Pi Pico 2W for the extra ooomph, altho a Pi Pico 1W would work for this application.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hello World</title>
       <link>http://localhost:1313/posts/hello-world/</link>
