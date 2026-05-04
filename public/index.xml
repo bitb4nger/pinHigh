@@ -6,12 +6,21 @@
     <description>Recent content on pinHigh</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 19 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 26 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Working with Keyes_AD_Key</title>
+      <link>http://localhost:1313/posts/keyes-ad-key/</link>
+      <pubDate>Sun, 26 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/keyes-ad-key/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m working on a bigger project right now that will release later, but one of the building blocks that I want to highlght is this device:&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;The Keyes_AD_Key&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/keyes-ad-key/AD_Key.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;This is the Keyes_AD_Key 5 switch, 3 wire controller interface. I was interested upon seeing the low price of this item as well as the small wire count. So how does it work? The 3 pins are VCC, GND, and OUT. The OUT pin needs to be connected to an ADC pin on the microcontroller to decode which buttons are being pressed. The buttons activate different valued resistors on a resitor ladder that pulls to ground, reading the differing voltages can be decoded into the button presses.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Pi Pico 2W with Waveshare Pico ePaper 2.13</title>
       <link>http://localhost:1313/posts/pico-epaper-2.13/</link>
-      <pubDate>Sun, 19 Apr 2026 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 24 Apr 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/pico-epaper-2.13/</guid>
       <description>&lt;p&gt;I recently picked up a Pico-ePaper-2.13 from Waveshare. This is a great, small e-ink display with a fast refresh time designed for interfacing with the Pi Pico. I want to make a few things with this, but I&amp;rsquo;m going to start out making a clock/weather widget display for your desk. I&amp;rsquo;m using a Pi Pico 2W for the extra ooomph, altho a Pi Pico 1W would work for this application.&lt;/p&gt;</description>
     </item>
