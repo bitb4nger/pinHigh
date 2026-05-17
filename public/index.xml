@@ -6,8 +6,23 @@
     <description>Recent content on pinHigh</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 26 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 16 May 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mini Pi Pico arcade</title>
+      <link>http://localhost:1313/posts/pinhigh-arcade/</link>
+      <pubDate>Sat, 16 May 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/pinhigh-arcade/</guid>
+      <description>&lt;p&gt;&lt;img alt=&#34;Screengrab&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/pinhigh-arcade/main_screen.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m working on a mini arcade based on the Pi Pico 2. There&amp;rsquo;s much more to be done, but it&amp;rsquo;s coming along enough to do a small writeup and post the code/schematics. The bill of materials:&lt;/p&gt;
+&lt;p&gt;Pi Pico 2&lt;/p&gt;
+&lt;p&gt;240x240 Display with ST7789 driver&lt;/p&gt;
+&lt;p&gt;Keyes AD Key 5 button analog controller&lt;/p&gt;
+&lt;p&gt;8 Ohm speaker with a 150-220 Ohm resistor for basic sound output&lt;/p&gt;
+&lt;p&gt;Breadboard and jumper wires&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Whole setup&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/pinhigh-arcade/full_setup.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s the schematic for connections:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Working with Keyes_AD_Key</title>
       <link>http://localhost:1313/posts/keyes-ad-key/</link>

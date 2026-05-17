@@ -39,3 +39,9 @@ theme = "PaperMod"
   name = "About"
   url = "/about/"
   weight = 4
+
+  [security.funcs]
+getenv = ['^HUGO_']
+
+[markup.goldmark.renderer]
+unsafe = true

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="dark">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Mini Pi Pico arcade | pinHigh</title>
+<meta name="keywords" content="">
+<meta name="description" content="
+I&rsquo;m working on a mini arcade based on the Pi Pico 2. There&rsquo;s much more to be done, but it&rsquo;s coming along enough to do a small writeup and post the code/schematics. The bill of materials:
+Pi Pico 2
+240x240 Display with ST7789 driver
+Keyes AD Key 5 button analog controller
+8 Ohm speaker with a 150-220 Ohm resistor for basic sound output
+Breadboard
+Jumper Wires
+
+Here&rsquo;s the schematic for connections:">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/pinhigh-arcade/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.9e010bc22ef5794c0560b82f657f315607f24d8b05e0088e95b900c22246f5c0.css" integrity="sha256-ngELwi71eUwFYLgvZX8xVgfyTYsF4AiOlbkAwiJG9cA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/pinhigh-arcade/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="pinHigh (Alt + H)">pinHigh</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://localhost:1313/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/projects/" title="Projects">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Mini Pi Pico arcade
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h1>
+    <div class="post-meta"><span title='2026-05-16 00:00:00 +0000 UTC'>May 16, 2026</span>&nbsp;·&nbsp;<span>3 min</span>
+
+</div>
+  </header> 
+  <div class="post-content md-content"><p><img alt="Screengrab" loading="lazy" src="/posts/pinhigh-arcade/main_screen.jpg"></p>
+<p>I&rsquo;m working on a mini arcade based on the Pi Pico 2. There&rsquo;s much more to be done, but it&rsquo;s coming along enough to do a small writeup and post the code/schematics. The bill of materials:</p>
+<p><a href="https://www.sparkfun.com/raspberry-pi-pico-2.html">Pi Pico 2</a></p>
+<p><a href="https://www.icstation.com/inch-240x240-display-module-st7789-driver-240240-p-14035.html">240x240 Display with ST7789 driver</a></p>
+<p><a href="https://www.diymore.cc/products/ad-keyboard-simulate-five-key-module-analog-button-for-arduino-sensor-expansion-board-electronic-modules">Keyes AD Key 5 button analog controller</a></p>
+<p><a href="https://www.jameco.com/z/MNS40H5R8M1W-Jameco-ValuePro-Round-40mm-Diameter-8-Ohm-Speaker-with-2-36-Inch-Wires-1-2W-90dB-5kHz_2499447.html">8 Ohm speaker with a 150-220 Ohm resistor for basic sound output</a></p>
+<p><a href="https://digilent.com/shop/half-size-breadboard/">Breadboard</a></p>
+<p><a href="https://store-usa.arduino.cc/products/breadboard-jumper-wire-pack-200mm-100mm">Jumper Wires</a></p>
+<p><img alt="Whole setup" loading="lazy" src="/posts/pinhigh-arcade/full_setup.jpg"></p>
+<p>Here&rsquo;s the schematic for connections:</p>
+<p><img alt="pinHigh arcade schematic" loading="lazy" src="/posts/pinhigh-arcade/pinhigh_arcade_wiring_schematic.svg"></p>
+<p>Once you have the devices wired up, head over to <a href="https://github.com/bitb4nger/pinHigh_arcade">https://github.com/bitb4nger/pinHigh_arcade</a> and grab all the relevant code. Here&rsquo;s a list of all the programs and their purpose:</p>
+<p>asteroids.py - Asteroids clone</p>
+<p>breakout.py - Breakout clone</p>
+<p>flappy.py - Flappy Bird clone (runs terribly at the moment)</p>
+<p>keys.py - Translation for the key input so other games can just call &ldquo;UP, DOWN, LEFT, RIGHT, and ACTION&rdquo;</p>
+<p>main.py - Main loop, this is the starting menu screen, a launcher for the individual games</p>
+<p>rawkey.py - Test software for the analog controller input</p>
+<p>scores.py - Save file for high scores that persists across power cycles</p>
+<p>seaquest.py - SeaQuest clone</p>
+<p>sfx.py - Sound handling script</p>
+<p>snake.py - Snake clone</p>
+<p>space_shooter.py - Space shooter (this one needs work)</p>
+<p>st7789py.py - Driver file for the screen, tells the Pico how to draw shapes and pixels</p>
+<p>tetris.py - Tetris clone</p>
+<p>vga2_8x16.py - Text/font display data</p>
+<p>You should now be able to play games while the Pico is connected to power! Try out Snake first, it&rsquo;s the most complete and functional currently. I think this is a cool device to learn some game programming tricks on, but some of the games aren&rsquo;t complete or have small errors. Flappy Bird has some redraw issues, the Asteroids clone has bullets that stick on the screen instead of being cleaned up, Tetris occasionally has a weird input error that I haven&rsquo;t nailed down and the space shooter is bland and boring, needs to be reworked.</p>
+<p>Adding more games only requires a single line of code to be added to the main file for each game, I think we could fit 80+ small arcade games in the memory we have.</p>
+<video controls width="100%">
+  <source src="snakeplay.mp4" type="video/mp4">
+</video>
+<p>There&rsquo;s still much more work to be done on this, here&rsquo;s my to-do list:</p>
+<p>3D print a case for the screen, speaker and Pico, separate case for the controller</p>
+<p>Add a battery and charge controller</p>
+<p>Add a high score screen visible from the base menu, add 4 letter names for the high scores</p>
+<p>Reset/power button</p>
+<p>We&rsquo;re using basically none of the flash memory, so MOAR GAMES!!!!</p>
+<p>I&rsquo;d like to develop a longer game for this hardware, perhaps an RPG</p>
+<p>Add an I2C sound output, the current speaker/resistor combo is relatively quiet and also a little ghetto</p>
+<p>I&rsquo;m also not sure that I&rsquo;m using the Pico 2 to it&rsquo;s limits, I might be better off with the cheaper Pico 1, but I will need to do some testing to verify.</p>
+<p><img alt="Tetris" loading="lazy" src="/posts/pinhigh-arcade/tetris.jpg"></p>
+<p>I will keep working on this project from time to time, the github will have the latest versions of the games and menu code. Expect a blog post update in the future as I complete certain milestones.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">pinHigh</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
