@@ -1,7 +1,7 @@
 +++
 title = "Mini Pi Pico arcade"
 date = 2026-05-16
-draft = true
+draft = false
 +++
 
 ![Screengrab](main_screen.jpg)
